@@ -21,13 +21,14 @@ def page_to_html(url):
 #Apenas para criar uma regra de nomenclatura, depois se for preciso abrir algum arquivo html e desejarmos saber a url de origem é só trocar o ';' por '/'. 
 
     path = urlparse(url).path.replace('/', ';')
-    
+#É importante que seu chromedriver esteja no diretório abaixo.
     with webdriver.Chrome('C:\Program Files\chromedriver.exe', options=options) as driver:
         driver.get(url)
         time.sleep(3)
         html = driver.page_source
 
-        with codecs.open(f"seu-d\{path}.html", "w", 'utf-8') as file:
+#Será salvo na pasta abaixo.
+        with codecs.open(f"seu-diretorio\{path}.html", "w", 'utf-8') as file:
             file.write(html)
 
 def print_progress(n, total):
