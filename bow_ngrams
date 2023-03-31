@@ -1,0 +1,20 @@
+import generate_ngrams
+
+def count_ngrams(text, n):
+    # gerar n_grams do texto
+    ngrams = generate_ngrams(text, n)
+
+    # dicionário vazio para armazenar a quantidade de n-grams e sua contagem
+    ngram_counts = {}
+
+    # loop incremental de ngrams
+    for ngram in ngrams:
+        if ngram in ngram_counts:
+            ngram_counts[ngram] += 1
+        else:
+            ngram_counts[ngram] = 1
+
+    # ordenando do mais recorrente para o menos recorrente.
+    sorted_ngram_counts = sorted(ngram_counts.items(), key=lambda x: x[1], reverse=True)
+
+    return sorted_ngram_counts
