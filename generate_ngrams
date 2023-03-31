@@ -1,0 +1,17 @@
+def generate_ngrams(text, n):
+
+    # converte o texto em minúsculo e remover espaços vazios ou pontuações
+    text = text.lower()
+    text = re.sub(r'[^\w\s]', '', text)
+
+    # gerando tokens - existem outros modelos como nltk tokenizer que certamente trará resultados melhores
+    words = text.split()
+
+    # gerar n-grams através do texto
+    ngrams = []
+    for i in range(len(words)-n+1):
+        ngrams.append(' '.join(words[i:i+n]))
+
+    return ngrams
+    
+#motivação https://www.linkedin.com/pulse/como-calcular-frequ%C3%AAncia-de-uma-kw-usando-python-t%C3%BAlio-botega/
